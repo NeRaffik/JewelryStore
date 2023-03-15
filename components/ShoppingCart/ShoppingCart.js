@@ -1,7 +1,14 @@
 class ShoppingCart{
 
     handlerClear(){
+        productsPage.render();
         ROOT_SHOPPINGCART.innerHTML = '';
+    }
+
+    handlerSetLocatiomStorage(element,id){
+        productsPage.handlSetLocationStorage(element,id);
+
+        shoppingPage.render();
     }
 
     render(){
@@ -16,6 +23,11 @@ class ShoppingCart{
                     <tr>
                         <td class="shopping-element__name">${productName}</td>
                         <td class="shopping-element__price">${price.toLocaleString()} ₽</td>
+                        <td>
+                            <button class="shopping-element__btn btn_select" onclick="shoppingPage.handlerSetLocatiomStorage(this,'${id}');">
+                                Удалить из корзины
+                            </button>
+                        </td>
                     </tr>
                 `;
                 sumCatalog += price;
